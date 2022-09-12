@@ -381,18 +381,18 @@
                 </div>
                 <div class="col-md-2"></div>
             </div>
-            <form th:action="@{/users/addUser}" method="post" class="formInfo">
+            <form th:action="@{/users/addUser}" method="post" class="formInfo" >
                 <div class="row  inputName-inputEmail">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 row justify-content-evenly">
                         <div class="col-lg-5">
                             <div class="row">
-                                <input type="text" name="name" class="col-md-12 " placeholder="Name *">
+                                <input type="text" name="name" class="col-md-12 " placeholder="Name *" required>
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="row">
-                                <input type="text" name="email" class="col-md-12 " placeholder="Email *">
+                                <input type="text" name="email" class="col-md-12 " placeholder="Email *" required>
                             </div>
                         </div>
                     </div>
@@ -403,7 +403,7 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 row">
                         <input type="text" name="message" class="col-lg-12 formInfo-inputMessages"
-                            placeholder="Message *">
+                            placeholder="Message *" required>
                     </div>
                     <div class="col-lg-2"></div>
                 </div>
