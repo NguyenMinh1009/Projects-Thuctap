@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" th:rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styleMain.css}" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav>
+            <div class="navbar">
+                <a th:href="@{/users}" class="logo"><img
+                        th:src="@{http://crucio.riccardoborchi.it/wp-content/uploads/2017/05/logo-1.png}" alt="CRUCIO"
+                        class="image-logo"></a>
+                <ul class="nav-list" id="navi-list">
+                    <li class="list-item"><a href="#home">HOME</a></li>
+                    <li class="list-item"><a href="#about">ABOUT</a></li>
+                    <li class="list-item"><a href="#services">SERVICES</a></li>
+                    <li class="list-item"><a href="#portfolio">PORTFOLIO</a></li>
+                    <li class="list-item"><a href="#">BLOG</a></li>
+                    <li class="list-item"><a href="#contact">CONTACT</a></li>
+                </ul>
+                <div class="menu" id="toggle-button">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </div>
+            </div>
+            <hr>
+        </nav>
+        <!-- -------------------------Edit User --------------------------------->
+        <form th:action="@{/users/updateUser}" method="put" class="formInfo">
+            <br><br><br><br><br><br>
+            <input style="display: none" type="text" name="id" th:value="${User.id}">
+            <div class="row  inputName-inputEmail">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 row justify-content-evenly">
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <input type="text" name="name" class="col-md-12" th:value="${User.name}" >
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <input type="text" name="email" class="col-md-12 " th:value="${User.email}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+
+            <div class="row justify-content-center formInfo-divMessages">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 row">
+                    <input type="text" name="message" class="col-lg-12 formInfo-inputMessages" th:value="${User.message}">
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <input type="submit" class="formInfo-submit" value="SEND"></input>
+                </div>
+
+            </div>
+        </form>
+
+
+
+    </div>
+</body>
+
+</html>

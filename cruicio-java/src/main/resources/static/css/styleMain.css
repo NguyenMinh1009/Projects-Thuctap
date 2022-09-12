@@ -626,7 +626,7 @@ opacity: 0.75;
 }
 
 .listUsers-title{
-    padding-bottom: 80px;
+    padding-bottom: 60px;
 }
 
 .listUsers table{
@@ -634,28 +634,20 @@ opacity: 0.75;
     justify-content: center;
 }
 
-
-
 .listUsers td{
     border:3px solid #ad00ff ;
+    padding: 10px 15px;
+    text-align: center;
 }
 
-.listUsers td h6 , p , h5{
-    padding: 15px;
-    display: flex;
-    justify-content: space-around;
-}
-.listUsers h1{
-    padding: 0 20px;
-}
-#list-users i{
+.listUsers i{
     color: black;
     transition: all .5s ease-in-out;
-    font-size: 30px;
-    padding: 0 10px;
+    font-size: 28px;
+    padding: 0 8px;
     cursor: pointer;
 }
-#list-users i :hover{
+.listUsers i :hover{
     color: #AD00FF;
 }
 /*-------------Banner footer-------------*/
@@ -680,6 +672,28 @@ opacity: 0.75;
     padding: 10px;
     color: #FFF;
 }
+
+/* User modal edit */
+.user-item-title{
+    font-size: 18px;
+}
+
+.user-item-input{
+    border: 0;
+    border-bottom: 1px solid rgba(30,30,30,0.3);
+    transition: all .5s ease-in-out;
+    margin: 15px auto;
+    text-align: left;
+}
+
+.user-item-input:focus-visible{
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid #AD00FF !important;
+    margin: 15px auto;
+    transition: all .5s ease-in-out;
+}
+
 
 @media all and (max-width: 1100px){
 
@@ -752,6 +766,9 @@ opacity: 0.75;
         font-size: 30px !important;
         letter-spacing: 8px;
     }
+
+
+    
 }
 
 @media all and (max-width: 600px){
@@ -791,4 +808,5 @@ opacity: 0.75;
         font-size: 24px !important;
         letter-spacing: 7px !important;
     }
+
 }

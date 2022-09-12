@@ -1,10 +1,10 @@
 const toggleButton = document.getElementById('toggle-button');
 const naviList = document.getElementById('navi-list');
 
-toggleButton.addEventListener('click', () => {
-    naviList.classList.toggle('active');
+// toggleButton.addEventListener('click', () => {
+//     naviList.classList.toggle('active');
 
-})
+// })
 
 /*----------------------------------------------------------------------------------------*/
 
@@ -76,99 +76,20 @@ function projectMyout() {
     document.querySelector("#portfolio > div.row.ourPortfolio-listItem > div:nth-child(8) > img").style.transform = 'scale(1)';
 }
 
-
-var userAPI = 'http://localhost:8080/users'
-
-function start() {
-    getUsers(renderUser)
-
-    handleCreateForm();
-}
-
-start();
-
-//functions
-function getUsers(callback) {
-    fetch(userAPI)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(callback)
-}
-
-function createUser(data, callback){
-    var options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-       
-    };
-    fetch(userAPI, options)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(callback)
-}
-
-function renderUser(users) {
-    var listUsersBlock =
-        document.querySelector('#list-users');
-
-    var htmls = users.map(function (user) {
-        return `
-            <tr>
-                <td>
-                    <h6>${user.name}</h6>
-                </td>
-                <td>
-                    <h6>${user.email}</h6>
-                </td>
-                <td>
-                    <p>${user.message}</p>
-                </td>
-                <td>
-                    <h1>
-                        <i class="fas fa-pen-square"></i>
-                        <i class="fas fa-trash-alt"></i>
-                    </h1>
-                </td>
-            </tr>
-            `;
-    });
-    listUsersBlock.innerHTML = htmls;
-}
-
-function handleCreateForm(){
-    var createBtn = document.querySelector('#create');
-    createBtn.onclick = function(){
-        var name = document.querySelector('input[name="name"]').value;
-        var email = document.querySelector('input[name="email"]').value;
-        var message = document.querySelector('input[name="message"]').value;
-    
-
-        var formData = {
-            name: name,
-            email: email, 
-            message: message
-        }
-        createUser(formData)
-    }
-}
-
-
-
-// function CORSSolve() {
-//     const xhttp = new XMLHttpRequest()
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById('list-users').innerText =
-//                 xhttp.responseText
-//         }
-//     };
-//     xhttp.open("GET", "http://localhost:8080/users", true)
-//     xhttp.send()
+// function showConfirmModalDialog(id){
+//     $('#yesOption'.attr('href', '/users/deleteUser/' +id));
+//     $('deleteModal').modal('show')
 // }
 
-// CORSSolve();
+
+
+
+
+
+
+
+
+
+
+
+
