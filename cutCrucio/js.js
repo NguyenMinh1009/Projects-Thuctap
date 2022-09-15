@@ -76,8 +76,35 @@ function projectMyout() {
     document.querySelector("#portfolio > div.row.ourPortfolio-listItem > div:nth-child(8) > img").style.transform = 'scale(1)';
 }
 
+//check format email
+function validation(){
+	var form = document.getElementById("form");
+	var email = document.getElementById("email").value;
+	var text = document.getElementById("text");
+	var pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+	if(email.match(pattern)){
+		form.classList.add("valid");
+		form.classList.remove("invalid");
+		text.innerHTML="Your Email Address in Valid.";
+		text.style.color = "#00ff00";
+	}else{
+		form.classList.remove("valid");
+		form.classList.add("invalid");
+		text.innerHTML="Please Enter Valid Email Address";
+		text.style.color = "#ff0000";
+	}
+	if(email==""){
+		form.classList.remove("valid");
+		form.classList.remove("invalid");
+		text.innerHTML="";
+		text.style.color = "#00ff00";
+	}
+}
+
 
 var userAPI = 'http://localhost:8080/users'
+var userCreateAPI = 'http://localhost:8080/users/addUser'
 
 function start() {
     getUsers(renderUser)
@@ -96,20 +123,20 @@ function getUsers(callback) {
         .then(callback)
 }
 
-function createUser(data, callback){
+function createUser(data, callback) {
     var options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
-       
+        body: JSON.stringify(data)
+
     };
-    fetch(userAPI, options)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(callback)
+    fetch(userCreateAPI, options)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(callback)
 }
 
 function renderUser(users) {
@@ -135,40 +162,27 @@ function renderUser(users) {
                     </h1>
                 </td>
             </tr>
-            `;
+            `
     });
     listUsersBlock.innerHTML = htmls;
 }
 
-function handleCreateForm(){
+function handleCreateForm() {
     var createBtn = document.querySelector('#create');
-    createBtn.onclick = function(){
+    createBtn.onclick = function () {
         var name = document.querySelector('input[name="name"]').value;
         var email = document.querySelector('input[name="email"]').value;
         var message = document.querySelector('input[name="message"]').value;
-    
+
 
         var formData = {
             name: name,
-            email: email, 
+            email: email,
             message: message
         }
-        createUser(formData)
+        createUser(formData, function () {
+            getUsers(renderUser);
+        })
     }
 }
 
-
-
-// function CORSSolve() {
-//     const xhttp = new XMLHttpRequest()
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById('list-users').innerText =
-//                 xhttp.responseText
-//         }
-//     };
-//     xhttp.open("GET", "http://localhost:8080/users", true)
-//     xhttp.send()
-// }
-
-// CORSSolve();

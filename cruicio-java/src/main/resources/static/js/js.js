@@ -81,10 +81,94 @@ function projectMyout() {
 //     $('deleteModal').modal('show')
 // }
 
+// $(document).ready(function () {
+
+// 	// Denotes total number of rows
+// 	var rowIdx = 0;
+
+// 	// jQuery button click event to add a row
+// 	$('#addBtn').on('click', function () {
+
+// 		// Adding a row inside the tbody.
+// 		$('#tbody').append(`<tr id="R${++rowIdx}">
+// 			<td class="row-index text-center">
+// 			<p>Row ${rowIdx}</p>
+// 			</td>
+// 			<td class="text-center">
+// 				<button class="btn btn-danger remove"
+// 				type="button">Remove</button>
+// 				</td>
+// 			</tr>`);
+// 	});
+
+// 	// jQuery button click event to remove a row.
+// 	$('#tbody').on('click', '.remove', function () {
+
+// 		// Getting all the rows next to the row
+// 		// containing the clicked button
+// 		var child = $(this).closest('tr').nextAll();
+
+// 		// Iterating across all the rows
+// 		// obtained to change the index
+// 		child.each(function () {
+
+// 		// Getting <tr> id.
+// 		var id = $(this).attr('id');
+
+// 		// Getting the <p> inside the .row-index class.
+// 		var idx = $(this).children('.row-index').children('p');
+
+// 		// Gets the row number from <tr> id.
+// 		var dig = parseInt(id.substring(1));
+
+// 		// Modifying row index.
+// 		idx.html(`Row ${dig - 1}`);
+
+// 		// Modifying row id.
+// 		$(this).attr('id', `R${dig - 1}`);
+// 		});
+
+// 		// Removing the current row.
+// 		$(this).closest('tr').remove();
+
+// 		// Decreasing total number of rows by 1.
+// 		rowIdx--;
+// 	});
+// 	});
 
 
+//check format email
+function validation(){
+	var form = document.getElementById("form");
+	var email = document.getElementById("email").value;
+	var text = document.getElementById("text");
+	var pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+	if(email.match(pattern)){
+		form.classList.add("valid");
+		form.classList.remove("invalid");
+		text.innerHTML="Your Email Address in Valid.";
+		text.style.color = "#00ff00";
+	}else{
+		form.classList.remove("valid");
+		form.classList.add("invalid");
+		text.innerHTML="Please Enter Valid Email Address";
+		text.style.color = "#ff0000";
+	}
+	if(email==""){
+		form.classList.remove("valid");
+		form.classList.remove("invalid");
+		text.innerHTML="";
+		text.style.color = "#00ff00";
+	}
+}
 
 
+//react
+// var listCoursesBlock = 
+// document.querySelector('#list-users')
+
+// var co
 
 
 

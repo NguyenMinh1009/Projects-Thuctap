@@ -681,6 +681,14 @@ opacity: 0.75;
     color: #FFF;
 }
 
+#text{
+    display: block;
+    color: #000;
+    font-weight: 500i;
+    font-style: italic;
+    padding: 5px;
+}
+
 @media all and (max-width: 1100px){
 
     .menu{

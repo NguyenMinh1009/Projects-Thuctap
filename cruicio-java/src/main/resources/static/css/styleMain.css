@@ -694,6 +694,15 @@ opacity: 0.75;
     transition: all .5s ease-in-out;
 }
 
+#text{
+    display: block;
+    color: #000;
+    font-weight: 500i;
+    font-style: italic;
+    padding: 5px;
+}
+
+
 
 @media all and (max-width: 1100px){
 
