@@ -18,6 +18,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.example.facebook.entity.User;
+import com.example.facebook.exception.custom.CustomTokenException;
+import com.example.facebook.model.CustomError;
 import com.example.facebook.model.TokenPayload;
 import com.example.facebook.repository.UserRepository;
 import com.example.facebook.util.JwtTokenUtil;
@@ -41,25 +43,55 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         String token = null;
         TokenPayload tokenPayload = null;
-
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Token")) {
             token = requestTokenHeader.substring(6).trim();
-
             try {
                 tokenPayload = jwtTokenUtil.getTokenPayLoad(token);
 
             } catch (SignatureException e) {
                 System.out.println("Invalid JWT signature");
+                // try {
+                //     throw new CustomTokenException(
+                //             CustomError.builder().code("4003").message("Error token").build());
+                // } catch (CustomTokenException e1) {
+                //     e1.printStackTrace();
+                // }
             } catch (IllegalArgumentException ex) {
                 System.out.println("Unable to get JWT");
+                // try {
+                //     throw new CustomTokenException(
+                //             CustomError.builder().code("4003").message("Error token").build());
+                // } catch (CustomTokenException e1) {
+                //     e1.printStackTrace();
+                // }
             } catch (ExpiredJwtException ex) {
                 System.out.println("Token has expired");
+                // try {
+                //     throw new CustomTokenException(
+                //             CustomError.builder().code("4003").message("Error token").build());
+                // } catch (CustomTokenException e1) {
+                //     e1.printStackTrace();
+                // }
+            }catch (Exception ex) {
+                System.out.println("Token Error");
+                try {
+                    throw new CustomTokenException(
+                            CustomError.builder().code("4003").message("Error token").build());
+                } catch (CustomTokenException e1) {
+                    e1.printStackTrace();
+                }
             }
         } else {
             System.out.println("JWT Token does not start with 'Token' ");
+            try {
+                throw new CustomTokenException(
+                        CustomError.builder().code("4003").message("Error token").build());
+            } catch (CustomTokenException e1) {
+
+                e1.printStackTrace();
+            }
         }
 
-        // System.out.println(tokenPayload);
         if (tokenPayload != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             Optional<User> userOptional = userRepository.findById(tokenPayload.getUserId());
             if (userOptional.isPresent()) {

@@ -3,6 +3,7 @@ package com.example.facebook.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import com.example.facebook.entity.User;
 import com.example.facebook.exception.custom.CustomBadRequestException;
 import com.example.facebook.exception.custom.CustomNotFoundException;
 import com.example.facebook.model.CustomError;
+import com.example.facebook.model.profile.dto.ProfileDTOResponse;
 import com.example.facebook.model.user.dto.UserDTOCreate;
 import com.example.facebook.model.user.dto.UserDTOLoginRequest;
 import com.example.facebook.model.user.dto.UserDTOResponse;
@@ -32,7 +34,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public Map<String, UserDTOResponse> authenticate(Map<String, UserDTOLoginRequest> userLoginRequestMap) throws CustomBadRequestException {
+    public Map<String, UserDTOResponse> authenticate(Map<String, UserDTOLoginRequest> userLoginRequestMap)
+            throws CustomBadRequestException {
         UserDTOLoginRequest userDTOLoginRequest = userLoginRequestMap.get("user");
 
         Optional<User> userOptional = userRepository.findByEmail(userDTOLoginRequest.getEmail());
@@ -46,7 +49,8 @@ public class UserServiceImpl implements UserService {
             }
         }
         if (!isAuthen) {
-            throw new CustomBadRequestException(CustomError.builder().code("400").message("Username or password incorrect").build());
+            throw new CustomBadRequestException(
+                    CustomError.builder().code("400").message("Username or password incorrect").build());
             // System.out.println("tai khoan, mat khau sai");
         }
         return buildDTOResponse(userOptional.get());
@@ -78,6 +82,7 @@ public class UserServiceImpl implements UserService {
         throw new CustomNotFoundException(CustomError.builder().code("404").message("User not exist").build());
     }
 
+    @Override
     public User getUserLoggedIn() {
         Object princial = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (princial instanceof UserDetails) {
@@ -87,5 +92,103 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public Map<String, Object> getProfile(String userId) throws CustomNotFoundException {
+        User userLoggedIn = getUserLoggedIn();
+        Optional<User> userOptional = userRepository.findById(Integer.parseInt(userId));
+        if (userOptional.isEmpty()) {
+            throw new CustomNotFoundException(CustomError.builder().code("404").message("User Not Found").build());
+        }
+        User user = userOptional.get();
+        Set<User> followers = user.getFollowers();
+        Set<User> followering = user.getFollowing();
+        boolean isFollowing = false;
+        for (User u : followers) {
+            if (u.getId() == userLoggedIn.getId()) {
+                isFollowing = true;
+                break;
+            }
+        }
+        int followedNumber = followers.size();
+        int followingNumber = followering.size();
+
+        //  --------------------------------------------------------
+        Map<String, Object> wrapper = new HashMap<>();
+        ProfileDTOResponse profileDTOResponse = ProfileDTOResponse.builder()
+                .username(user.getUsername())
+                .following(isFollowing)
+                .build();
+
+        wrapper.put("profile", profileDTOResponse);
+        wrapper.put("followedNumber", followedNumber);
+        wrapper.put("followingNumber", followingNumber);
+        return wrapper;
+    }
+
+    private Map<String, ProfileDTOResponse> buildProfileResponse(User user, boolean isFollowing) {
+        Map<String, ProfileDTOResponse> wrapper = new HashMap<>();
+        ProfileDTOResponse profileDTOResponse = ProfileDTOResponse.builder()
+                .username(user.getUsername())
+                .following(isFollowing)
+                .build();
+
+        wrapper.put("profile", profileDTOResponse);
+        return wrapper;
+    }
+
+    @Override
+    public Map<String, ProfileDTOResponse> followUser(String userId) throws CustomNotFoundException {
+        User userLoggedIn = getUserLoggedIn();
+        Optional<User> userOptional = userRepository.findById(Integer.parseInt(userId));
+        if (userOptional.isEmpty()) {
+            throw new CustomNotFoundException(CustomError.builder().code("404").message("User Not Found").build());
+        }
+        User user = userOptional.get();
+        Set<User> followers = user.getFollowers();
+        boolean isFollowing = false;
+        for (User u : followers) {
+            if (u.getId() == userLoggedIn.getId()) {
+                isFollowing = true;
+                break;
+            }
+        }
+
+        if (!isFollowing) {
+            isFollowing = true;
+            user.getFollowers().add(userLoggedIn);
+            user = userRepository.save(user);
+        }
+        return buildProfileResponse(userOptional.get(), isFollowing);
+    }
+
+    @Override
+    public Map<String, ProfileDTOResponse> unfollowUser(String userId) throws CustomNotFoundException {
+        User userLoggedIn = getUserLoggedIn();
+        Optional<User> userOptional = userRepository.findById(Integer.parseInt(userId));
+
+        if (userOptional.isEmpty()) {
+            throw new CustomNotFoundException(CustomError.builder().code("404").message("User Not Found").build());
+        }
+        User user = userOptional.get();
+        Set<User> followers = user.getFollowers();
+        boolean isFollowing = false;
+        for (User u : followers) {
+            if (u.getId() == userLoggedIn.getId()) {
+                isFollowing = true;
+                break;
+            }
+        }
+
+        if (isFollowing) {
+            isFollowing = true;
+            user.getFollowers().remove(userLoggedIn);
+            user = userRepository.save(user);
+            isFollowing = false;
+
+        }
+        return buildProfileResponse(userOptional.get(), isFollowing);
+    }
+
 
 }

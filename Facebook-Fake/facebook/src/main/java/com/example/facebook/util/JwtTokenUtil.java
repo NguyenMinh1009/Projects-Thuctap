@@ -17,7 +17,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenUtil {
 
-    private final static String secret = "QUAN_DZ";
+    private final static String secret = "MINH_DZ";
 
     public String generateToken(User user, long expiredDate) {
         Map<String, Object> claims = new HashMap<>();

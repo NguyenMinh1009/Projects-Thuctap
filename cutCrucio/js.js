@@ -103,8 +103,8 @@ function validation(){
 }
 
 
-var userAPI = 'http://localhost:8080/users'
-var userCreateAPI = 'http://localhost:8080/users/addUser'
+var userAPI = 'https://api.publicapis.org/entries'
+// var userCreateAPI = 'http://localhost:8080/users/addUser'
 
 function start() {
     getUsers(renderUser)
@@ -147,13 +147,13 @@ function renderUser(users) {
         return `
             <tr>
                 <td>
-                    <h6>${user.name}</h6>
+                    <h6>${user.API}</h6>
                 </td>
                 <td>
-                    <h6>${user.email}</h6>
+                    <h6>${user.Description}</h6>
                 </td>
                 <td>
-                    <p>${user.message}</p>
+                    <p>${user.Auth}</p>
                 </td>
                 <td>
                     <h1>

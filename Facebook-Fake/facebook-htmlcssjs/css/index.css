@@ -1,0 +1,401 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.5s;
+}
+
+body {
+  height: 100vh;
+}
+.post {
+  border: 2px solid #999999;
+  box-shadow: 0px 0px 3px 0.5px #999999;
+  width: 500px;
+  height: auto;
+  margin: auto;
+  padding: auto;
+  border-radius: 8px;
+}
+.post_header {
+  padding: 10px;
+}
+.authorUsername {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 15px;
+}
+.post_header-iconUser {
+  border-radius: 2px solid #777;
+  float: left;
+  padding: 5px;
+  font-size: 15px;
+}
+.post_header-iconUser i {
+  padding: 8px;
+  font-size: 15px;
+}
+.post_header-date {
+  font-size: 12px;
+  color: #999999;
+}
+.list-posts {
+  margin-top: 80px;
+}
+
+.post_header-following {
+  color: blue;
+  font-weight: 600;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+.post_body {
+  padding: 10px 18px;
+  word-wrap: none;
+  word-wrap: break-word;
+}
+
+.post_body h4 {
+  font-size: 15px;
+  word-wrap: break-word;
+}
+/* -------------------Comment---------- */
+
+.inputComment {
+  border-radius: 5px;
+  padding: 3px 100px 3px 0px;
+  margin: 10px 0 0 20px;
+  word-wrap: break-word;
+}
+.handleListCmt {
+  padding: 3px 3px;
+  border-radius: 5px;
+  margin: 10px 0 0 20px;
+}
+.handleListCmt:hover {
+  background: rgb(108, 168, 246);
+}
+.buttonCreateCmt {
+  border-radius: 5px;
+  padding: 3px 3px;
+}
+
+.buttonCreateCmt:hover {
+  background: rgb(108, 168, 246);
+}
+.comment {
+  padding: 3px 3px;
+  border-radius: 10px;
+  background: rgb(231, 221, 221);
+  max-width: fit-content;
+  margin: 5px 20px 0 20px;
+  word-wrap: break-word;
+}
+.authorUsernameCmt {
+  display: inline-block;
+  font-size: 15px;
+  padding: 2px;
+  cursor: pointer;
+}
+.comment_header p {
+  display: inline-block;
+  font-size: 12px;
+  color: #999999;
+  padding: 2px;
+}
+.comment_body p {
+  padding: 1px 2px 4px 4px;
+}
+.soMore{
+  padding: 10px 10px 10px 20px;
+
+}
+.soMore-button{
+  outline: 0;
+  border: 0;
+  background: white;
+  cursor: pointer;
+}
+.soMore-button:hover{
+  color: #e26e70;
+}
+.reply-button{
+  display: block;
+  outline: 0;
+  border: 0;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: 25px;
+}
+.reply-button:hover{
+  color: #e26e70;
+}
+.countCommentChild{
+  outline: 0;
+  border: 0;
+  background: white;
+  cursor: pointer;
+  margin-left: 25px;
+  padding-top: 5px;
+  font-size: 13px;
+
+}
+.list-comment-child{
+  padding-left: 30px;
+}
+
+/* -------------------Page---------- */
+
+.paginationComment,
+.paginationPost {
+  padding: 20px 0;
+  display: flex !important;
+  justify-content: center;
+  /* padding-left: 200px; */
+}
+.indexPage:hover {
+  background-color: rgb(108, 168, 246);
+}
+.indexPage {
+  border: 2px solid black;
+  padding: 8px;
+  margin: 0 8px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* display: inline-block; */
+}
+
+/* --------------------Modal New Post--------------------- */
+:root {
+  --pink-color: #e26e70;
+}
+
+.open-modal-btn {
+  font-size: 20px;
+  border-radius: 30px;
+  /* border: 2px solid black; */
+  padding: 10px;
+  margin-left: 20px;
+  z-index: 2;
+  background-color: white;
+  cursor: pointer;
+  margin-top: 100px;
+  position: fixed;
+  top: 400px;
+  left: 200px;
+}
+.open-modal-btn:hover {
+  background: rgb(108, 168, 246);
+  border: none;
+  outline: none;
+}
+.modal,
+.modalLogin,
+.modalLogOut,
+.modalRegister {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal_inner,
+.modalLogin_inner,
+.modalLogOut_inner,
+.modalRegister_inner {
+  width: 420px;
+  position: relative;
+  top: 30%;
+  margin: auto;
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  animation: modalShow 0.5s linear;
+}
+.modal_header,
+.modalLogin_header,
+.modalLogOut_header,
+.modalRegister_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: var(--pink-color);
+  color: white;
+}
+.modal_header p,
+.modalLogin_header p,
+.modalLogOut_header p,
+.modalRegister_header p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.modalRegister_header i:hover,
+.modalLogOut_header i:hover,
+.modal_header i:hover,
+.modalLogin_header i:hover {
+  cursor: pointer;
+  color: rgb(247, 49, 82);
+}
+.modal_body,
+.modalLogin_body,
+.modalLogOut_body,
+.modalRegister_body {
+  padding: 15px;
+}
+.modalRegister_body h2,
+.modalLogOut_body h2,
+.modal_body h2,
+.modalLogin_body h2 {
+  color: var(--pink-color);
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.modalRegister_body-item,
+.modalLogOut_body-item,
+.modal_body-item,
+.modalLogin_body-item {
+  padding: 8px 0;
+}
+.modalRegister_body-item input,
+.modalLogOut_body-item input,
+.modal_body-item input,
+.modalLogin_body-item input {
+  display: block;
+  padding: 5px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+}
+.modalRegister_footer-button,
+.modalLogOut_footer-button,
+.modal_footer-button,
+.modalLogin_footer-button {
+  padding: 15px;
+  text-align: right;
+  display: inline-block;
+}
+.modalRegister_footer button,
+.modalLogOut_footer button,
+.modal_footer button,
+.modalLogin_footer button {
+  padding: 10px 20px;
+  color: white;
+  background: var(--pink-color);
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.messLogin,
+.messRegister {
+  display: inline-block;
+  width: 200px;
+  padding-left: 20px;
+}
+.callLogin,
+.callRegister {
+  cursor: pointer;
+  text-align: left;
+  padding-top: 5px;
+  color: rgb(86, 142, 248);
+}
+.callLogin:hover,
+.callRegister:hover {
+  color: var(--pink-color);
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes modalShow {
+  from {
+    top: -200px;
+    opacity: 0;
+  }
+
+  to {
+    top: 30%;
+    opacity: 1;
+  }
+}
+
+/* ----------personalPage---------------------------- */
+.personalPage-header {
+  padding-bottom: 20px;
+}
+.cover-image {
+  width: 1000px;
+  height: 320px;
+  background: rgb(75, 139, 234);
+  border-radius: 10px;
+  margin: auto;
+  z-index: 1;
+}
+
+.avatar i {
+  font-size: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
+  padding: 50px;
+  margin-left: 350px;
+  z-index: 2;
+  margin-top: -50px;
+  background-color: white;
+}
+.avatar {
+  display: inline-block;
+}
+.personalInfo {
+  display: inline-block;
+}
+.username {
+  font-size: 35px;
+  font-weight: 700;
+  margin-left: 20px;
+  padding-bottom: 10px;
+}
+.followInfo-followedItem {
+  margin-left: 20px;
+  font-size: 16px;
+}
+.followInfo-followingItem {
+  margin-left: 10px;
+  font-size: 16px;
+}
+.followStatus {
+  display: inline-block;
+  margin-left: 280px;
+}
+.followStatus input {
+  padding: 10px 40px;
+  background-color: #61d2f1;
+  font-size: 16px;
+}
+
+/* -----------------On top ------------------------ */
+.onToTop {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  display: none;
+}
+.onToTop-button {
+  border-radius: 50%;
+}
+.onToTop-button i {
+  font-size: 30px;
+  padding: 30px;
+}
+.onToTop-button i:hover {
+  color: var(--pink-color);
+  cursor: pointer;
+}

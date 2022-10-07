@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.example.facebook.exception.custom.CustomBadRequestException;
 import com.example.facebook.exception.custom.CustomNotFoundException;
+import com.example.facebook.exception.custom.CustomTokenException;
 import com.example.facebook.model.CustomError;
 
 
@@ -25,6 +26,11 @@ public class APIExceptionHandler {
     @ExceptionHandler(CustomNotFoundException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public Map<String, CustomError> notFoundException(CustomNotFoundException ex) {
+        return ex.getErrors();
+    }
+    @ExceptionHandler(CustomTokenException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public Map<String, CustomError> notTokenException(CustomTokenException  ex) {
         return ex.getErrors();
     }
 }

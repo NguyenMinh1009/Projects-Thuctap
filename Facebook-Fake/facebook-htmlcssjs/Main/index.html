@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/topbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <script src="https://unpkg.com/dayjs"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.35/dayjs.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="topbar">
+        <div class="header-usernameFb">
+          <div class="usernameFb" onclick="handleHome()">FaceMinh</div>
+        </div>
+        <div class="header-userLogginInfo">
+          <div class="iconUser"><i class="fa-solid fa-user"></i></div>
+          <input onclick="handleGetPersonalProfile()" type="button"  class="usernameLogginInfo" id="usernameLogginInfo"></input>
+        </div>
+        <div class="header-handleLogInLogOut">
+          <input type="button" class="handleLogIn" id="handleLogIn" value="Login"></input>
+          <input type="button" class="handleLogOut" id="handleLogOut" value="LogOut"></input>
+        </div>
+      </div>
+    </header>
+    <div class="modalLogin hide">
+      <div class="modalLogin_inner">
+        <div class="modalLogin_header">
+          <p>Login</p>
+          <i class="fa-solid fa-xmark iconCloseLogin"></i>
+        </div>
+        <div class="modalLogin_body">
+          <div class="modalLogin_body-item">
+            <h2>Email</h2>
+            <input id="inputEmail" type="text" />
+          </div>
+          <div class="modalLogin_body-item">
+            <h2>Password</h2>
+            <input id="inputPassword" type="password" />
+          </div>
+        </div>
+        <div class="modalLogin_footer">
+          <div class="messRegister">
+            <a class="callRegister">You don't have an account, register here</a>
+          </div>
+          <div class="modalLogin_footer-button">
+            <button onclick="handleLogin()" class="LoginBtn">Login</button>
+            <button class="btnCloseLogin">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalRegister hide">
+      <div class="modalRegister_inner">
+        <div class="modalRegister_header">
+          <p>Register</p>
+          <i class="fa-solid fa-xmark iconCloseRegister"></i>
+        </div>
+        <div class="modalRegister_body" id="modalRegister_body">
+          <div class="modalRegister_body-item">
+            <h2>Email</h2>
+            <input id="inputEmailRegister" type="text" onkeydown="validation()"/>
+            <span id="text"></span>
+
+          </div>
+          <div class="modalRegister_body-item">
+            <h2>Password</h2>
+            <input id="inputPasswordRegister" type="password" />
+          </div>
+          <div class="modalRegister_body-item">
+            <h2>FullName</h2>
+            <input id="inputFullNameRegister" type="text" />
+          </div>
+        </div>
+        <div class="modalRegister_footer">
+          <!-- <div class="messLogin">
+            <a class="callLogin">You had an account, login here</a>
+          </div> -->
+          <div class="modalRegister_footer-button">
+            <button onclick="handleRegister()" class="RegisterBtn">Register</button>
+            <button class="btnCloseRegister">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalLogOut hide">
+      <div class="modalLogOut_inner">
+        <div class="modalLogOut_header">
+          <p>LogOut</p>
+          <i class="fa-solid fa-xmark iconCloseLogOut"></i>
+        </div>
+        <div class="modalLogOut_body">
+            <h2>Are you sure logout</h2>
+        </div>
+        <div class="modalLogOut_footer">
+          <div class="modalLogOut_footer-button">
+            <button onclick="handleLogOut()"  class="LogOutBtn">Yes</button>
+            <button button class="btnCloseLogOut">Close</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <button class="open-modal-btn" id="open-modal-btn">+ New Post</button>
+    <div class="modal hide">
+      <div class="modal_inner">
+        <div class="modal_header">
+          <p>Create New Post</p>
+          <i class="fa-solid fa-xmark iconClosePost"></i>
+        </div>
+        <div class="modal_body">
+          <div class="modal_body-item">
+            <h2>Title</h2>
+            <input id="inputTitle" type="text" />
+          </div>
+          <div class="modal_body-item">
+            <h2>Body</h2>
+            <input id="inputBody" type="text" />
+          </div>
+        </div>
+        <div class="modal_footer">
+          <div class="modal_footer-button">
+            <button class="CreateBtnPost" onclick="handleCreatePostForm()">
+              Create
+            </button>
+            <button class="CloseBtnPost">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="container">
+      
+      <div class="list-posts" id="list-posts"></div>
+    </div>
+
+    <div class="onToTop" id="onToTop" onclick="handleOnToTop()">
+      <button class="onToTop-button">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </div>
+
+    <script language="javascript" src="../js/index.js"></script>
+    <script language="javascript" src="../js/HandleFollow.js"></script>
+    <script language="javascript" src="../js/personalPage.js"></script>
+    <script language="javascript" src="../js/login.js"></script>
+    <script language="javascript" src="../js/topbar.js"></script>
+    <script language="javascript" src="../js/logout.js"></script>
+    <script language="javascript" src="../js/register.js"></script>
+    <script language="javascript" src="../js/comment.js"></script>
+    <script language="javascript" src="../js/testDayJs.js"></script>
+    <script language="javascript" src="../js/repComment.js"></script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1518px;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  outline: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: rgb(108, 168, 246);
+  padding: 10px 0;
+}
+.usernameFb {
+  padding-left: 200px;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  cursor: pointer;
+}
+.iconUser {
+  display: inline-block;
+}
+
+.usernameLogginInfo {
+  display: inline-block;
+  padding-left: 8px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: rgb(108, 168, 246);
+
+}
+/* .nameCurrentUser{
+
+
+} */
+.usernameLogginInfo:hover{
+    color: white;
+}
+.handleLogIn, .handleLogOut {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 15px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+.header-handleLogInLogOut {
+  padding-top: 4px;
+  padding-right: 200px;
+}
+.handleLogIn:hover, .handleLogIn:hover {
+  color: white;
+  background: rgb(108, 168, 246);
+}
+.header-userLogginInfo {
+  padding-top: 4px;
+  padding-left: 600px;
+  cursor: pointer;
+
+}
+.iconUser i {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: white;
+}
+.iconUser i:hover{
+    color: white;
+    background: black;
+}
+
