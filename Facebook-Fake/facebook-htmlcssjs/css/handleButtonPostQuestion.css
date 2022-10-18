@@ -1,0 +1,14 @@
+.handlePostQuestion{
+    padding-top: 100px;
+    margin-left: 650px;
+}
+.handlePostQuestion button{
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 20px;
+    background: pink;
+    cursor: pointer;
+}
+.handlePostQuestion button:hover{
+    background: #61d2f1;
+}

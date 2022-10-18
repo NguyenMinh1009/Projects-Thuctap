@@ -19,27 +19,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "posts_tbl")
+@Table(name = "question_tbl")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Posts {
-
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String title;
+    private String content;
+
     private LocalDateTime date;
-    private String body;
+
+    @OneToMany(mappedBy = "question")
+    private List<Answer> answers;
 
     @ManyToOne
-    @JoinColumn(name="author_id")
-    private User author;
+    @JoinColumn(name="user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "posts")
-    private List<Comment> comments;
-
+    @ManyToOne
+    @JoinColumn(name="questionCategory_id")
+    private QuestionCategory questionCategory;
 }
+

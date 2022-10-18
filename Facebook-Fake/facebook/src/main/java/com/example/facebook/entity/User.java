@@ -48,6 +48,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
+    @OneToMany(mappedBy = "user")
+    private List<Question> questions;
+
+    @OneToMany(mappedBy = "user")
+    private List<Answer> answers;
+
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_follow", joinColumns = @JoinColumn(name="follower_id"), inverseJoinColumns = @JoinColumn(name="user_id"))
     private Set<User> followers; //Những ai đang follow t

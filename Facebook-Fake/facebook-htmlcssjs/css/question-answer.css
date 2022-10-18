@@ -1,0 +1,98 @@
+.addAnswer {
+  border-radius: 10px;
+  background: white;
+  padding: 3px;
+  cursor: pointer;
+}
+.addAnswer:hover {
+  background: rgb(108, 168, 246);
+}
+
+.qCategory-item {
+  display: flex;
+  width: 100%;
+}
+.qCategory-item input {
+  width: 7%;
+  margin-right: 10px;
+}
+.listQCategory {
+  display: flex;
+  justify-content: space-around;
+}
+.answer-title {
+  display: inline-block;
+  padding-top: 5px;
+}
+.createAnswer-chooseAnswer-title {
+  float: right;
+  padding: 5px 10px 0 0;
+  font-weight: 600;
+}
+.answerItem {
+  padding-bottom: 10px;
+}
+.inputAnswer {
+  outline: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 55%;
+}
+.chooseAnswer {
+  margin-left: 80px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.appearListAnswer{
+  padding: 20px;
+}
+.appearListAnswer-title{
+  display: flex;
+  justify-content: space-between;
+}
+.listAnswerTitle{
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(251, 111, 134);
+  padding-left: 10px;
+
+}
+.listChooseTitle{
+  color: rgb(251, 111, 134);
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  padding-right: 10px;
+
+}
+.answer{
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: rgb(221, 246, 246);
+  padding: 10px;
+  word-break: break-all;
+}
+.contentAnswer{
+  width: 70%;
+}
+.chooseAnswerInHome{
+  width: 5%;
+  margin-right: 45px;
+  padding: 5px;
+  /* padding-left: 20px; */
+}
+.buttonSaveAnswer{
+  /* float: right; */
+  margin: 10px 0 0 365px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background: rgb(254, 185, 196);
+  cursor: pointer;
+}
+.buttonSaveAnswer:hover{
+  background: rgb(254, 133, 153);
+}

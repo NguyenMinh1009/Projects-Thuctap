@@ -42,7 +42,7 @@ body {
   color: #999999;
 }
 .list-posts {
-  margin-top: 80px;
+  margin-top: 10px;
 }
 
 .post_header-following {
@@ -174,8 +174,21 @@ body {
 :root {
   --pink-color: #e26e70;
 }
-
-.open-modal-btn {
+.open-modalQuestion-btn{
+  font-size: 20px;
+  border-radius: 30px;
+  /* border: 2px solid black; */
+  padding: 10px;
+  margin-left: 20px;
+  z-index: 2;
+  background-color: white;
+  cursor: pointer;
+  margin-top: 100px;
+  position: fixed;
+  top: 300px;
+  left: 200px;
+}
+.open-modal-btn{
   font-size: 20px;
   border-radius: 30px;
   /* border: 2px solid black; */
@@ -189,7 +202,7 @@ body {
   top: 400px;
   left: 200px;
 }
-.open-modal-btn:hover {
+.open-modal-btn:hover, .open-modalQuestion-btn:hover {
   background: rgb(108, 168, 246);
   border: none;
   outline: none;
@@ -197,7 +210,7 @@ body {
 .modal,
 .modalLogin,
 .modalLogOut,
-.modalRegister {
+.modalRegister,.modalQuestion {
   position: fixed;
   top: 0;
   height: 100vh;
@@ -207,7 +220,8 @@ body {
 .modal_inner,
 .modalLogin_inner,
 .modalLogOut_inner,
-.modalRegister_inner {
+.modalRegister_inner,
+.modalQuestion_inner {
   width: 420px;
   position: relative;
   top: 30%;
@@ -220,7 +234,8 @@ body {
 .modal_header,
 .modalLogin_header,
 .modalLogOut_header,
-.modalRegister_header {
+.modalRegister_header,
+.modalQuestion_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -231,27 +246,31 @@ body {
 .modal_header p,
 .modalLogin_header p,
 .modalLogOut_header p,
-.modalRegister_header p {
+.modalRegister_header p,
+.modalQuestion_header p {
   font-size: 16px;
   font-weight: 600;
 }
 .modalRegister_header i:hover,
 .modalLogOut_header i:hover,
 .modal_header i:hover,
-.modalLogin_header i:hover {
+.modalLogin_header i:hover,
+.modalQuestion_header i:hover {
   cursor: pointer;
   color: rgb(247, 49, 82);
 }
 .modal_body,
 .modalLogin_body,
 .modalLogOut_body,
-.modalRegister_body {
+.modalRegister_body,
+.modalQuestion_body {
   padding: 15px;
 }
 .modalRegister_body h2,
 .modalLogOut_body h2,
 .modal_body h2,
-.modalLogin_body h2 {
+.modalLogin_body h2,
+.modalQuestion_body h2 {
   color: var(--pink-color);
   margin-bottom: 8px;
   font-size: 16px;
@@ -259,13 +278,15 @@ body {
 .modalRegister_body-item,
 .modalLogOut_body-item,
 .modal_body-item,
-.modalLogin_body-item {
+.modalLogin_body-item,
+.modalQuestion_body-item {
   padding: 8px 0;
 }
 .modalRegister_body-item input,
 .modalLogOut_body-item input,
 .modal_body-item input,
-.modalLogin_body-item input {
+.modalLogin_body-item input,
+.modalQuestion_body-item input {
   display: block;
   padding: 5px;
   border-top: none;
@@ -277,7 +298,8 @@ body {
 .modalRegister_footer-button,
 .modalLogOut_footer-button,
 .modal_footer-button,
-.modalLogin_footer-button {
+.modalLogin_footer-button,
+.modalQuestion_footer-button {
   padding: 15px;
   text-align: right;
   display: inline-block;
@@ -285,7 +307,8 @@ body {
 .modalRegister_footer button,
 .modalLogOut_footer button,
 .modal_footer button,
-.modalLogin_footer button {
+.modalLogin_footer button,
+.modalQuestion_footer button{
   padding: 10px 20px;
   color: white;
   background: var(--pink-color);

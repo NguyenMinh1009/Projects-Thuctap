@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/index.css" />
     <link rel="stylesheet" href="../css/topbar.css" />
+    <link rel="stylesheet" href="../css/question-answer.css" />
+    <link rel="stylesheet" href="../css/handleButtonPostQuestion.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -140,9 +142,53 @@
       </div>
     </div>
 
+    <button class="open-modalQuestion-btn" id="open-modalQuestion-btn">+ New Question</button>
+    <div class="modalQuestion hide">
+      <div class="modalQuestion_inner">
+        <div class="modalQuestion_header">
+          <p>Create New Question</p>
+          <i class="fa-solid fa-xmark iconCloseQuestion"></i>
+        </div>
+        <div class="modalQuestion_body">
+          <div class="modalQuestion_body-item">
+            <h2>Question Category</h2>
+            <div class="listQCategory">
+              <div class="qCategory-item">
+                <input type="radio"  name="qCategory" value="1"/> <span>Show answer</span>
+              </div>
+              <div class="qCategory-item">
+                <input type="radio"  name="qCategory" value="2"/> <span> No show answer</span>
+              </div>
+            </div>
+            <h2>Question</h2>
+            <input id="inputQuestion" type="text" />
+            <h2 class="answer-title">Answers</h2>
+            <span class="createAnswer-chooseAnswer-title">Choose correct answer</span>
+          </div>
+          <div class="listAnswer", id="listAnswer">
+          </div>
+          <button class="addAnswer" onclick="handleAddAnswer()">+ Add answer</button>
+
+        </div>
+        <div class="modalQuestion_footer">
+          <div class="modalQuestion_footer-button">
+            <button class="CreateBtnQuestion" onclick="handleCreateQuestion()">
+              Create
+            </button>
+            <button class="CloseBtnQuestion">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="handlePostQuestion">
+      <button onclick="handleRenderListPostLogin()">Post</button>
+      <button  onclick="handleAppearListQuestion()">Question</button>
+    </div>
     <div class="container" id="container">
-      
       <div class="list-posts" id="list-posts"></div>
+      <div class="list-posts" id="list-questions"></div>
     </div>
 
     <div class="onToTop" id="onToTop" onclick="handleOnToTop()">
@@ -161,5 +207,7 @@
     <script language="javascript" src="../js/comment.js"></script>
     <script language="javascript" src="../js/testDayJs.js"></script>
     <script language="javascript" src="../js/repComment.js"></script>
+    <script language="javascript" src="../js/question.js"></script>
+    <script language="javascript" src="../js/answer.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-package com.example.facebook.model.ports.dto;
+package com.example.facebook.model.answer.dto;
 
 import java.time.LocalDateTime;
 
@@ -13,11 +13,8 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostsDTOResponse {
-    private int id;
-    private String title;
+public class AnswerDTOCreate {
     private LocalDateTime date;
-    private String body;
-    private AuthorDTOResponse author;
-
+    private String content;
+    private Boolean isCheck;
 }

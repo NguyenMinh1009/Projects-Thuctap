@@ -47,7 +47,7 @@ const renderComment = (listComment, checkCreate) => {
     var time = handleTimeToNow(comment.date);
     var commentId = comment.commentId;
 
-    var countReplies = "";
+    // var countReplies = "";
     var countCmtChild = comment.countCommentChild;
     if (countCmtChild !== 0) {
       return `

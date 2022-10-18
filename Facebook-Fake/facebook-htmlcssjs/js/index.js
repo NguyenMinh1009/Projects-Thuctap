@@ -55,6 +55,10 @@ const listPost = async (pageNumber) => {
 var listPostsBlock = document.querySelector("#list-posts");
 
 const renderPost = (listPost) => {
+  var listQuestionBlock = document.querySelector("#list-questions")
+  listQuestionBlock.innerHTML = ""
+
+  //---------------------------------------------------- 
   var posts = listPost.posts;
 
   var countPosts = listPost.postsCount;
@@ -107,22 +111,22 @@ const renderPost = (listPost) => {
 var scroll = 1;
 var buttonOnTop = document.querySelector(".onToTop");
 
-window.addEventListener("scroll", () => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+// window.addEventListener("scroll", () => {
+//   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-  if (scrollTop > 400) {
-    document.getElementById("onToTop").style.display = "block";
-    handleGetCurrentUser();
-  } else {
-    document.getElementById("onToTop").style.display = "none";
-    handleGetCurrentUser();
-  }
+//   if (scrollTop > 400) {
+//     document.getElementById("onToTop").style.display = "block";
+//     handleGetCurrentUser();
+//   } else {
+//     document.getElementById("onToTop").style.display = "none";
+//     handleGetCurrentUser();
+//   }
 
-  if (clientHeight + scrollTop >= scrollHeight - 5) {
-    scroll++;
-    handleRenderListPostLogin(scroll);
-  }
-});
+//   if (clientHeight + scrollTop >= scrollHeight - 5) {
+//     scroll++;
+//     handleRenderListPostLogin(scroll);
+//   }
+// });
 
 const handleOnToTop = () => {
   // window.scrollTo(0,0)
@@ -187,6 +191,7 @@ const renderCurrentUser = (currentUser) => {
       array[i].style.display = "none";
     }
     document.getElementById("open-modal-btn").style.display = "none";
+    document.getElementById("open-modalQuestion-btn").style.display = "none";
   } else {
     username = currentUser.user.username;
     document.getElementById("handleLogOut").style.display = "block";
@@ -196,6 +201,7 @@ const renderCurrentUser = (currentUser) => {
       array[i].style.display = "block";
     }
     document.getElementById("open-modal-btn").style.display = "block";
+    document.getElementById("open-modalQuestion-btn").style.display = "block";
   }
 
   document.getElementById("usernameLogginInfo").value = username;

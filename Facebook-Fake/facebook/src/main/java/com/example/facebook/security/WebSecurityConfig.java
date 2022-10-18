@@ -32,6 +32,7 @@ public class WebSecurityConfig {
                 .antMatchers(HttpMethod.GET, "/api/posts").permitAll() //test
                 .antMatchers(HttpMethod.GET, "/api/posts/**/comments").permitAll() //test
                 .antMatchers(HttpMethod.POST, "/api/users").permitAll() //test
+                .antMatchers(HttpMethod.GET, "/api/question/**").permitAll() //test
                 .antMatchers("/api/**").authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

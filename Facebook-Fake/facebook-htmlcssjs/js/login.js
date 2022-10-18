@@ -43,6 +43,8 @@ const handleLogin = async () => {
       }
     });
     await handleGetCurrentUser();
+    listPostsBlock.innerHTML=''
+    
     var posts = await listPost(1);
     if (posts === null) {
       console.log("Loi listPost");

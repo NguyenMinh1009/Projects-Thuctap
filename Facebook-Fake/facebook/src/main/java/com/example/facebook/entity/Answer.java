@@ -1,7 +1,6 @@
 package com.example.facebook.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,27 +17,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "posts_tbl")
+@Table(name = "answer_tbl")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Posts {
-
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id;  
 
-    private String title;
+    private String content;
+
     private LocalDateTime date;
-    private String body;
+
+    private Boolean isCheck;
 
     @ManyToOne
-    @JoinColumn(name="author_id")
-    private User author;
+    @JoinColumn(name="question_id")
+    private Question question;
 
-    @OneToMany(mappedBy = "posts")
-    private List<Comment> comments;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
 }
